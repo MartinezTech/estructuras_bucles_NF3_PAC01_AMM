@@ -1,27 +1,19 @@
 <?php
-
   $color = $_POST['color'];   //get data from form
   $font_family = $_POST['font-family'];
   $font_size = $_POST['font-size'];
   $text = $_POST['text'];
-  //echo "im here";
   $var_check_form = $_POST['check-form'];
   $boolean = false;
-
   if ($var_check_form == on){ //change boolean to true
     $boolean = true;
-    //echo "The boolean value is true";
-  }else{
-    //echo "I'm not inside boolean";
   }
   if($boolean == true){  //set cookies
-    //echo "I'm inside function set cookies";
     setcookie( "color", $color , time() + 36000 );
     setcookie( "font-family", $font_family, time() + 36000 );
     setcookie( "font-size", $font_size, time() + 36000 );
     setcookie( "text", $text, time() + 36000 );
   }
- 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,12 +37,10 @@
                 } else {
                   echo "<p style='color:" . $color . "; font-size: " . $font_size . "px; font-family: " . $font_family . ";'>" . $text . "</p>";
                 }
-
               ?>
             </div>
             <div class="footer-copyright text-center py-5">© 2020 Copyright:
               <?php include 'footer.php'//line footer of the page?> 
             </div>
-
     </body>
 </html>
