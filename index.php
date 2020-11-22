@@ -1,3 +1,9 @@
+<?php
+    session_start();  #start a session
+
+    if ( !isset( $_SESSION['count'] ) ) //visit count
+        $_SESSION['count'] = 1; else $_SESSION['count']++;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,20 +36,20 @@
             echo $message;            
         ?>
         <h3>Task 4 - Customizable text</h3>
-        <form action="test2.php" method="post">
+        <form action="customizable_css.php" method="post">
             <div class="form-group">
             <label for="text"></label>
             <textarea class="form-control" id="text" name="text" rows="3">This is the default text. It's amazing.</textarea>
             <label for="color">Select your favorite color:</label>
             <input type="color" id="color" name="color">
             <select name="font-family">
-                <option value="'Times New Roman', Times, serif">Times New Roman</option>
-                <option value="Arial, Helvetica, sans-serif">Arial</option>
-                <option value="'Lucida Console', Courier, monospace">Lucida Console</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Arial">Arial</option>
+                <option value="Courier New">Courier New</option>
                
             </select> 
             <label for="font-size">Size</label>
-            <input type="range" id="font-size" name="font-size" min="0" max="50">
+            <input type="range" id="font-size" name="font-size" min="0" max="100">
             <button type="submit" class="btn btn-primary mt-2">Submit</button>
             <input type="checkbox" id="cookies" name="check-form">
             <label for="cookies">Do you want to save cookies?</label>
@@ -53,9 +59,13 @@
         </form>
 
 
-        <h3>Task 2</h3>
+        <h3>Task 2 and 6 - Count visits and footer line</h3>
         <div class="footer-copyright text-center py-5">© 2020 Copyright:
-            <?php include 'footer.php' ?>
+
+            <?php 
+                echo "<p>Visit count:" . $_SESSION['count'] . "</p>";
+                include 'footer.php';
+            ?>
         </div>
     </div>
    

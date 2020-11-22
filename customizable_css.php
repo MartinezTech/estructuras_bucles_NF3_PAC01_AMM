@@ -1,5 +1,5 @@
 <?php
-  //echo "Hello world";
+
   $color = $_POST['color'];   //get data from form
   $font_family = $_POST['font-family'];
   $font_size = $_POST['font-size'];
@@ -21,6 +21,7 @@
     setcookie( "font-size", $font_size, time() + 36000 );
     setcookie( "text", $text, time() + 36000 );
   }
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,16 +37,20 @@
         </style>
     </head>
     <body>
-            <h1>Customizable text with CSS</h1>
-            <?php
-              if (isset($_COOKIE['color'])) { //check if there are cookies save and then print the TEXT with style
-                echo "<p style='color:" . $_COOKIE['color'] . "; font-family: " . $_COOKIE['font-family'] . "; font-size: " . $_COOKIE['font-size'] . ";'>" . $_COOKIE['text'] . "</p>";
-              } else {
-                echo "<p style='color:" . $color . "; font-family: " . $font_family . "; font-size: " . $font_size . ";'>" . $text . "</p>";
-              }
-              
-              
+            <h1 class="text-center">Customizable text with CSS</h1>
+            <div class="container">
+              <?php
+                if (isset($_COOKIE['color'])) { //check if there are cookies save and then print the TEXT with style
+                  echo "<p style='color:" . $_COOKIE['color'] . "; font-size: " . $_COOKIE['font-size'] . "px; font-family: " . $_COOKIE['font-family'] . ";'>" . $_COOKIE['text'] . "</p>";
+                } else {
+                  echo "<p style='color:" . $color . "; font-size: " . $font_size . "px; font-family: " . $font_family . ";'>" . $text . "</p>";
+                }
 
-            ?>
+              ?>
+            </div>
+            <div class="footer-copyright text-center py-5">© 2020 Copyright:
+              <?php include 'footer.php'//line footer of the page?> 
+            </div>
+
     </body>
 </html>
